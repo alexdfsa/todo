@@ -41,17 +41,12 @@ class _TodoPageState extends State<TodoPage> {
             itemCount: controller.listToDo.length,
             itemBuilder: (_, index) {
               var todo = controller.listToDo[index];
-              //Observer(builder: (_) {
               return CustomListTile(
-                  todo: todo,
-                  removed: () {
-                    Observer(
-                      builder: (_) {
-                        controller.deleteToDo(index);
-                      },
-                    );
-                  });
-              //});
+                todo: todo,
+                removeClicked: () {
+                  controller.deleteToDo(todo);
+                },
+              );
             },
           );
         },

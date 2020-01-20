@@ -4,9 +4,10 @@ import 'package:minhas_atividades/app/modules/todo/models/todo_model.dart';
 
 class CustomListTile extends StatelessWidget {
   final ToDoModel todo;
-  final Function removed;
+  final Function removeClicked;
 
-  const CustomListTile({Key key, this.todo, this.removed}) : super(key: key);
+  const CustomListTile({Key key, this.todo, this.removeClicked})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +19,7 @@ class CustomListTile extends StatelessWidget {
           trailing: IconButton(
             color: Colors.red,
             icon: Icon(Icons.remove_circle),
-            onPressed: () {
-              removed;
-            },
+            onPressed: removeClicked,
           ),
         );
       },

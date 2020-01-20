@@ -8,17 +8,17 @@ class TodoController = _TodoBase with _$TodoController;
 
 abstract class _TodoBase with Store {
   static ToDoRepository repository = ToDoRepository();
-  static List<ToDoModel> todos = repository.getTodosList().toList();
+  static List<ToDoModel> todos = repository.getTodosList();
 
   @observable
-  ObservableList<ToDoModel> listToDo = todos.asObservable().toList();
-/*
+  // ObservableList<ToDoModel> listToDo = todos.asObservable();
+
   ObservableList<ToDoModel> listToDo = [
     ToDoModel(name: "Tarefa1"),
     ToDoModel(name: "Tarefa2"),
     ToDoModel(name: "Tarefa3"),
   ].asObservable();
-*/
+
   @computed
   int get listToDoLength => listToDo.length;
 
@@ -36,9 +36,8 @@ abstract class _TodoBase with Store {
   }
 
   @action
-  void deleteToDo(int index) {
-    //listToDo.removeWhere((item) => item.name == todo.name);
-    listToDo.removeAt(index);
+  void deleteToDo(ToDoModel todo) {
+    listToDo.removeWhere((item) => item.name == todo.name);
   }
 
   @action

@@ -56,10 +56,10 @@ mixin _$TodoController on _TodoBase, Store {
   }
 
   @override
-  void deleteToDo(int index) {
+  void deleteToDo(ToDoModel todo) {
     final _$actionInfo = _$_TodoBaseActionController.startAction();
     try {
-      return super.deleteToDo(index);
+      return super.deleteToDo(todo);
     } finally {
       _$_TodoBaseActionController.endAction(_$actionInfo);
     }
